@@ -5,8 +5,7 @@ export default class ShoppingItems extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      productCount: 1,
-      userSelectedData: []
+      totalProductCount: 0,
     }
     this.getShoppingItems = this.getShoppingItems.bind(this);
     this.addItem = this.addItem.bind(this);
@@ -14,26 +13,40 @@ export default class ShoppingItems extends React.Component {
   }
 
   addItem(event) {
-    let getCount = this.state.productCount;
     this.setState({
-      productCount: getCount + 1
+      totalProductCount: this.state.totalProductCount + 1,
     })
 
     //Insert into Json
     let fetchId = event.currentTarget.parentElement.parentElement.id;
     let fetchItems = staticItems;
+    
     _.map(fetchItems.productList, item => {
       if(item.productId == fetchId) {
-        localStorage.setItem(item.productId, JSON.stringify(item));
+        item.count++;
+        if(item.count > 0)
+          localStorage.setItem(item.productId, JSON.stringify(item));
       }
     })
-    console.log(fetchItems);
   }
   
-  removeItem() {
-    let getCount = this.state.productCount;
+  removeItem(event) {
     this.setState({
-      productCount: getCount - 1
+      totalProductCount: this.state.totalProductCount - 1
+    })
+
+    //Remove into Json
+    let fetchId = event.currentTarget.parentElement.parentElement.id;
+    let fetchItems = staticItems;
+    _.map(fetchItems.productList, item => {
+      if (item.productId == fetchId) {
+        if (item.count > 0) {
+          item.count--;
+          localStorage.setItem(item.productId, JSON.stringify(item));
+        }
+        if(item.count == 0)
+          localStorage.removeItem(item.productId);
+      }
     })
   }
   

@@ -3,71 +3,85 @@
   {
     "productId": "1",
     "productName": "LetUsC",
+    "count": 0,
     "productCost": 300
   },
   {
     "productId": "2",
     "productName": "LetUsC++",
+    "count": 0,
     "productCost": 25000
   },
   {
     "productId": "3",
     "productName": "coreJava",
+    "count": 0,
     "productCost": 400
   },
   {
     "productId": "4",
     "productName": "Advancedjava",
+    "count": 0,
     "productCost": 500
   },
   {
     "productId": "5",
     "productName": "php",
+    "count": 0,
     "productCost": 150
   },
   {
     "productId": "6",
     "productName": "goLang",
+    "count": 0,
     "productCost": 100
   },
   {
     "productId": "7",
     "productName": "CleanCode",
+    "count": 0,
     "productCost": 200
   },
   {
     "productId": "8",
     "productName": "TDD",
+    "count": 0,
     "productCost": 250
   },
   {
     "productId": "9",
     "productName": "Physics",
+    "count": 0,
     "productCost": 50
   },
   {
     "productId": "10",
     "productName": "chemistry",
+    "count": 0,
     "productCost": 100
   },
   {
     "productId": "11",
     "productName": "Biology",
+    "count": 0,
     "productCost": 75
   },
   {
     "productId": "12",
     "productName": "DataStructure",
+    "count": 0,
     "productCost": 600
   },
   {
     "productId": "13",
     "productName": "ComputerNetworks",
+    "count": 0,
     "productCost": 200
   },
   {
     "productId": "14",
     "productName": "DataCommunications",
+    "count": 0,
     "productCost": 325
   }
 ]
