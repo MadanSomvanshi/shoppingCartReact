@@ -5,7 +5,6 @@ import ShoppingItem from './shopping-items';
 import PropTypes from 'prop-types';
 export default class Header extends React.Component {
   constructor(props) {
-    debugger
     super(props);
     this.state = {
       productCount: this.props.productCount

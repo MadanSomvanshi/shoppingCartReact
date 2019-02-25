@@ -5,23 +5,32 @@ export default class ShoppingItems extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      productCount: 1
+      productCount: 1,
+      userSelectedData: []
     }
     this.getShoppingItems = this.getShoppingItems.bind(this);
     this.addItem = this.addItem.bind(this);
     this.removeItem = this.removeItem.bind(this);
   }
 
-  addItem() {
-    debugger
+  addItem(event) {
     let getCount = this.state.productCount;
     this.setState({
       productCount: getCount + 1
     })
+
+    //Insert into Json
+    let fetchId = event.currentTarget.parentElement.parentElement.id;
+    let fetchItems = staticItems;
+    _.map(fetchItems.productList, item => {
+      if(item.productId == fetchId) {
+        localStorage.setItem(item.productId, JSON.stringify(item));
+      }
+    })
+    console.log(fetchItems);
   }
   
   removeItem() {
-    debugger
     let getCount = this.state.productCount;
     this.setState({
       productCount: getCount - 1
@@ -34,10 +43,10 @@ export default class ShoppingItems extends React.Component {
         console.log(item);
         return (
           <li key={item.productId}>
-            <div className="listItem">
+            <div className="listItem" id={item.productId}>
               {/* <div><span className="productLabel"></span><span>{item.productId}</span></div> */}
-              <div><span className="productLabel">Name:</span><span>{item.productName}</span></div>
-              <div><span className="productLabel">Cost:</span><span>{item.productCost}</span></div>
+              <div><span className="productLabel">Name:</span><span className="pName">{item.productName}</span></div>
+              <div><span className="productLabel">Cost:</span><span className="pCost">{item.productCost}</span></div>
               <div className="buttonWrap">
                 <button onClick={this.removeItem}>-</button>
                 <button onClick={this.addItem}>+</button>
