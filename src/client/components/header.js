@@ -8,18 +8,18 @@ export default class Header extends React.Component {
       <header>
         <Nav>
           <NavItem>
-            <NavLink href="#">Home</NavLink>
+            <NavLink href="/">Home</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="#">Offers</NavLink>
+            <NavLink href="/offers">Offers</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="#">Checkout</NavLink>
+            <NavLink href="/checkout">Checkout</NavLink>
           </NavItem>
           <NavItem className="cartWrapper">
             <NavLink href="#">
               <ShoppingCart />
-              <span class="count">1</span>
+              <span className="count">1</span>
             </NavLink>
           </NavItem>
         </Nav>

@@ -41,11 +41,12 @@ module.exports = {
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: 'dist',
+    publicPath: '/',
   },
   devServer: {
-    contentBase: path.resolve(__dirname, 'dist'),
-    port: 4000
+    disableHostCheck: true,
+    historyApiFallback: true,
+    port: 4000,
   },
   module: moduleObj,
   plugins: [

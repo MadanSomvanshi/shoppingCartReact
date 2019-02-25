@@ -1,72 +1,74 @@
-[
+{
+"productList": [
   {
-    "product_id": "1",
+    "productId": "1",
     "productName": "LetUsC",
-    "productcost": 300
+    "productCost": 300
   },
   {
-    "product_id": "2",
+    "productId": "2",
     "productName": "LetUsC++",
-    "productcost": 25000
+    "productCost": 25000
   },
   {
-    "product_id": "2",
+    "productId": "3",
     "productName": "coreJava",
-    "productcost": 400
+    "productCost": 400
   },
   {
-    "product_id": "4",
+    "productId": "4",
     "productName": "Advancedjava",
-    "productcost": 500
+    "productCost": 500
   },
   {
-    "product_id": "5",
+    "productId": "5",
     "productName": "php",
-    "productcost": 150
+    "productCost": 150
   },
   {
-    "product_id": "6",
+    "productId": "6",
     "productName": "goLang",
-    "productcost": 100
+    "productCost": 100
   },
   {
-    "product_id": "7",
+    "productId": "7",
     "productName": "CleanCode",
-    "productcost": 200
+    "productCost": 200
   },
   {
-    "product_id": "8",
+    "productId": "8",
     "productName": "TDD",
-    "productcost": 250
+    "productCost": 250
   },
   {
-    "product_id": "9",
+    "productId": "9",
     "productName": "Physics",
-    "productcost": 50
+    "productCost": 50
   },
   {
-    "product_id": "10",
+    "productId": "10",
     "productName": "chemistry",
-    "productcost": 100
+    "productCost": 100
   },
   {
-    "product_id": "11",
+    "productId": "11",
     "productName": "Biology",
-    "productcost": 75
+    "productCost": 75
   },
   {
-    "product_id": "12",
+    "productId": "12",
     "productName": "DataStructure",
-    "productcost": 600
+    "productCost": 600
   },
   {
-    "product_id": "13",
+    "productId": "13",
     "productName": "ComputerNetworks",
-    "productcost": 200
+    "productCost": 200
   },
   {
-    "product_id": "14",
+    "productId": "14",
     "productName": "DataCommunications",
-    "productcost": 325
+    "productCost": 325
   }
 ]
+}
