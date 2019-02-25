@@ -7,7 +7,7 @@ import CheckoutShopping from './checkout';
 export default class App extends Component {
   render() {
     return (
-      <div>
+      <div className="container">
         <Header />
         <BrowserRouter basename='/'>
           <Switch>

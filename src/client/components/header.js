@@ -1,8 +1,16 @@
 import React from 'react';
 import { Nav, NavItem, NavLink } from 'reactstrap';
 import ShoppingCart from './svg';
-
+import ShoppingItem from './shopping-items';
+import PropTypes from 'prop-types';
 export default class Header extends React.Component {
+  constructor(props) {
+    debugger
+    super(props);
+    this.state = {
+      productCount: this.props.productCount
+    }
+  }
   render() {
     return (
       <header>
@@ -19,7 +27,7 @@ export default class Header extends React.Component {
           <NavItem className="cartWrapper">
             <NavLink href="#">
               <ShoppingCart />
-              <span className="count">1</span>
+              <span className="count">{this.props.productCount}</span>
             </NavLink>
           </NavItem>
         </Nav>
@@ -27,3 +35,12 @@ export default class Header extends React.Component {
     );
   }
 }
+
+Header.propTypes = {
+  productCount: PropTypes.number,
+}
+
+Header.defaultProps = {
+  productCount: 0,
+}
+
