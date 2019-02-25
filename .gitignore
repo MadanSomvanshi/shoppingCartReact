@@ -1,8 +1,0 @@
-# Node
-node_modules/
-# Webstorm
-.idea/
-# Project
-dist/
-# Package.json-lock
-package-lock.json
