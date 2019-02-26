@@ -1,8 +1,8 @@
 import React from 'react';
 import { Nav, NavItem, NavLink } from 'reactstrap';
 import ShoppingCart from './svg';
-import ShoppingItem from './shopping-items';
 import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
 export default class Header extends React.Component {
   constructor(props) {
     super(props);
@@ -13,23 +13,13 @@ export default class Header extends React.Component {
   render() {
     return (
       <header>
-        <Nav>
-          <NavItem>
-            <NavLink href="/">Home</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink href="/offers">Offers</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink href="/checkout">Checkout</NavLink>
-          </NavItem>
-          <NavItem className="cartWrapper">
-            <NavLink href="#">
-              <ShoppingCart />
-              <span className="count">{this.props.productCount}</span>
-            </NavLink>
-          </NavItem>
-        </Nav>
+        <Link to='/'>Home</Link>
+        <Link to ='/offers'>Offers</Link>
+        <Link to='/checkout'>Checkout</Link>
+        <Link to='/checkout' className="cartWrapper">
+          <ShoppingCart />
+          <span className="count">{this.props.productCount}</span>
+        </Link>
       </header>
     );
   }
