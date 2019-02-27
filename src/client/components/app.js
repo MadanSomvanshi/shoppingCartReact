@@ -8,7 +8,6 @@ export default class App extends Component {
     return (
         <BrowserRouter basename='/'>
           <div className="container">
-            <Header />
             <Layout />
           </div>
         </BrowserRouter>
