@@ -4,17 +4,16 @@ export default class CheckoutShopping extends React.Component {
   constructor(props) {
     super(props);
     this.getSelectedItems = this.getSelectedItems.bind(this);
-    this.calculateBill = this.calculateBill.bind(this);
   }
 
   getSelectedItems() {
     const getItems = JSON.parse(JSON.stringify(localStorage));
+    this.total = 0;
     let fetchItem = _.map(getItems, item => {
       if(item != "INFO") {
         item = JSON.parse(item)
-        this.calculateBill(item.productCost, item.count)
       }
-
+      this.total += item.productCost * item.count; 
       return <li className='d-flex checkoutProductsList' key={item.productId}>
       <span>{item.productName}</span>
       <span>{item.productCost}</span>
@@ -25,20 +24,13 @@ export default class CheckoutShopping extends React.Component {
     return <ul>{fetchItem}</ul>
   }
 
-  calculateBill(cost, count) {
-    let singleItemBill = cost * count;
-    let bill = bill + singleItemBill;
-    return bill;
-  }
-
-
   render() {
     return (
       <div>
         <div>Payment Flow need to integrate</div>
         <div>
           {this.getSelectedItems()}
-          <span>Total Bill</span><span>{this.calculateBill()}</span>
+          <span>Total Bill</span><span>{this.total}</span>
         </div>
       </div>
     )
