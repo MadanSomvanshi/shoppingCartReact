@@ -11,6 +11,8 @@ export default class Layout extends Component {
     this.state = {
       totalProductCount: 0
     }
+    this.fetchItems=[];
+    this.count=0;
     this.addItem = this.addItem.bind(this);
     this.removeItem = this.removeItem.bind(this);
   }
@@ -23,15 +25,17 @@ export default class Layout extends Component {
 
     //Insert into Json
     let fetchId = event.currentTarget.parentElement.parentElement.id;
-    let fetchItems = staticItems;
 
-    _.map(fetchItems.productList, item => {
+    _.map(staticItems.productList, item => {
       if (item.productId == fetchId) {
         item.count++;
-        if (item.count > 0)
-          localStorage.setItem(item.productId, JSON.stringify(item));
+        if (item.count > 0 && !this.fetchItems.includes(item)) {
+          debugger
+          this.fetchItems.push(item);
+        }
       }
     })
+    localStorage.setItem('productList', JSON.stringify(this.fetchItems));
   }
 
   removeItem(event) {
@@ -41,17 +45,18 @@ export default class Layout extends Component {
 
     //Remove from Json
     let fetchId = event.currentTarget.parentElement.parentElement.id;
-    let fetchItems = staticItems;
-    _.map(fetchItems.productList, item => {
+
+    _.map(staticItems.productList, item => {
       if (item.productId == fetchId) {
         if (item.count > 0) {
           item.count--;
-          localStorage.setItem(item.productId, JSON.stringify(item));
         }
-        if (item.count == 0)
-          localStorage.removeItem(item.productId);
+        if (item.count == 0) {
+          this.fetchItems.pop(item);
+        }
       }
     })
+    localStorage.setItem('productList', JSON.stringify(this.fetchItems));
   }
 
 
