@@ -1,12 +1,10 @@
 import React from 'react';
 import staticItems from './items';
 import _ from 'lodash';
+import PropTypes from 'prop-types';
 export default class ShoppingItems extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      totalProductCount: 0,
-    }
     this.getShoppingItems = this.getShoppingItems.bind(this);
   }
 
@@ -40,5 +38,12 @@ export default class ShoppingItems extends React.Component {
   }
 }
 
+ShoppingItems.propTypes = {
+  removeItem: PropTypes.func,
+  addItem: PropTypes.func
+}
 
-
+ShoppingItems.defaultProps = {
+  removeItem: () => {},
+  addItem: () => {}
+}

@@ -21,7 +21,7 @@ export default class CheckoutShopping extends React.Component {
       <span>{item.productCost * item.count}</span>
       </li>
     });
-    return <ul>{fetchItem}</ul>
+    return <ul className='p-0'>{fetchItem}</ul>
   }
 
   render() {
@@ -30,7 +30,10 @@ export default class CheckoutShopping extends React.Component {
         <div>Payment Flow need to integrate</div>
         <div>
           {this.getSelectedItems()}
-          <span>Total Bill</span><span>{this.total}</span>
+          <div className="d-flex totalWrap">
+            <span>Total Bill</span>
+            <span>{this.total}</span>
+          </div>
         </div>
       </div>
     )
