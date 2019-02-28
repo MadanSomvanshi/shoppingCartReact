@@ -9,6 +9,7 @@ export default class ShoppingItems extends React.Component {
   }
 
   getShoppingItems() {
+    debugger
     if (staticItems) {
       let fetchItem = _.map(staticItems.productList, item => {
         console.log(item);
@@ -30,6 +31,7 @@ export default class ShoppingItems extends React.Component {
   }
   
   render() {
+    debugger
     return (
       <ul className="listHeader">
         {this.getShoppingItems()}

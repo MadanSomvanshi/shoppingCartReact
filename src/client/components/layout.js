@@ -9,61 +9,63 @@ export default class Layout extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      totalProductCount: 0
+      fetchItems: []
     }
-    this.fetchItems=[];
-    this.count=0;
     this.addItem = this.addItem.bind(this);
     this.removeItem = this.removeItem.bind(this);
   }
 
+  // componentDidMount() {
+  //   let fetchFromLocal = JSON.parse(localStorage.getItem('productList'));
+  //   debugger
+  //   this.setState({
+  //     fetchItems: fetchFromLocal ? fetchFromLocal : []
+  //   })
+  // }
 
   addItem(event) {
-    this.setState({
-      totalProductCount: this.state.totalProductCount + 1,
-    })
-
-    //Insert into Json
+    debugger
     let fetchId = event.currentTarget.parentElement.parentElement.id;
-
+    let fetchItems = [...this.state.fetchItems];
     _.map(staticItems.productList, item => {
       if (item.productId == fetchId) {
         item.count++;
-        if (item.count > 0 && !this.fetchItems.includes(item)) {
-          debugger
-          this.fetchItems.push(item);
+        if (item.count > 0 && !this.state.fetchItems.includes(item)) {
+            fetchItems.push(item);
+          }
         }
-      }
-    })
-    localStorage.setItem('productList', JSON.stringify(this.fetchItems));
+      })
+      this.setState({
+         fetchItems 
+      }, () => {
+         localStorage.setItem('productList', JSON.stringify(this.state.fetchItems))
+      });
+        
   }
 
   removeItem(event) {
-    this.setState({
-      totalProductCount: this.state.totalProductCount - 1
-    })
-
-    //Remove from Json
     let fetchId = event.currentTarget.parentElement.parentElement.id;
-
+    let fetchItems = [...this.state.fetchItems];
     _.map(staticItems.productList, item => {
       if (item.productId == fetchId) {
-        if (item.count > 0) {
+        if (item.count > 0)
           item.count--;
-        }
-        if (item.count == 0) {
-          this.fetchItems.pop(item);
-        }
+        if (item.count == 0)
+          fetchItems.pop(item)
       }
     })
-    localStorage.setItem('productList', JSON.stringify(this.fetchItems));
+    this.setState({
+      fetchItems
+    }, () => {
+      localStorage.setItem('productList', JSON.stringify(this.state.fetchItems));
+    })
   }
 
 
   render() {
     return (
       <div className="container">
-        <Header productCount={this.state.totalProductCount}/>
+        <Header productCount={this.state.fetchItems.length}/>
         <Switch>
           <Route 
             exact 
