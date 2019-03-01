@@ -15,16 +15,14 @@ export default class Layout extends Component {
     this.removeItem = this.removeItem.bind(this);
   }
 
-  // componentDidMount() {
-  //   let fetchFromLocal = JSON.parse(localStorage.getItem('productList'));
-  //   debugger
-  //   this.setState({
-  //     fetchItems: fetchFromLocal ? fetchFromLocal : []
-  //   })
-  // }
+  componentDidMount() {
+    let fetchFromLocal = JSON.parse(localStorage.getItem('productList'));
+    this.setState({
+      fetchItems: fetchFromLocal ? fetchFromLocal : []
+    })
+  }
 
   addItem(event) {
-    debugger
     let fetchId = event.currentTarget.parentElement.parentElement.id;
     let fetchItems = [...this.state.fetchItems];
     _.map(staticItems.productList, item => {
@@ -50,8 +48,6 @@ export default class Layout extends Component {
       if (item.productId == fetchId) {
         if (item.count > 0)
           item.count--;
-        if (item.count == 0)
-          fetchItems.pop(item)
       }
     })
     this.setState({

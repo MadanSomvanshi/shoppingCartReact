@@ -5,7 +5,6 @@ import Layout from './layout';
 
 export default class App extends Component {
   render() {
-    debugger
     return (
         <BrowserRouter basename='/'>
           <div className="container">

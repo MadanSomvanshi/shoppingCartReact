@@ -7,12 +7,10 @@ export default class CheckoutShopping extends React.Component {
   }
 
   getSelectedItems() {
-    const getItems = JSON.parse(JSON.stringify(localStorage));
+    const getItems = JSON.parse(localStorage.getItem('productList'));
     this.total = 0;
     let fetchItem = _.map(getItems, item => {
-      if(item != "INFO") {
-        item = JSON.parse(item)
-      }
+      if(item.count > 0) {
       this.total += item.productCost * item.count; 
       return <li className='d-flex checkoutProductsList' key={item.productId}>
       <span>{item.productName}</span>
@@ -20,6 +18,7 @@ export default class CheckoutShopping extends React.Component {
       <span>{item.count}</span>
       <span>{item.productCost * item.count}</span>
       </li>
+      }
     });
     return <ul className='p-0'>{fetchItem}</ul>
   }
