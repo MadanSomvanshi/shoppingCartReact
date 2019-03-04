@@ -25,26 +25,40 @@ export default class Layout extends Component {
   addItem(event) {
     let fetchId = event.currentTarget.parentElement.parentElement.id;
     let fetchItems = [...this.state.fetchItems];
-    _.map(staticItems.productList, item => {
+    let iterateThroughArray = [];
+
+    if(fetchItems.length) {
+      for (const item of fetchItems) {
+        if (item.productId == fetchId) {
+          iterateThroughArray = fetchItems;
+          break;
+        }
+          iterateThroughArray = staticItems.productList;
+        }
+      } else {
+        iterateThroughArray = staticItems.productList;
+    }
+    _.map(iterateThroughArray, item => {
       if (item.productId == fetchId) {
         item.count++;
         if (item.count > 0 && !this.state.fetchItems.includes(item)) {
-            fetchItems.push(item);
-          }
+          fetchItems.push(item);
         }
-      })
-      this.setState({
-         fetchItems 
-      }, () => {
-         localStorage.setItem('productList', JSON.stringify(this.state.fetchItems))
-      });
-        
+      }
+    })
+
+    this.setState({
+      fetchItems
+    }, () => {
+      localStorage.setItem('productList', JSON.stringify(this.state.fetchItems))
+    });
   }
 
   removeItem(event) {
     let fetchId = event.currentTarget.parentElement.parentElement.id;
     let fetchItems = [...this.state.fetchItems];
-    _.map(staticItems.productList, item => {
+
+    _.map(fetchItems, item => {
       if (item.productId == fetchId) {
         if (item.count > 0)
           item.count--;
